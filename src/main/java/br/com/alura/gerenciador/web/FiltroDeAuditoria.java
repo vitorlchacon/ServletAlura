@@ -29,7 +29,7 @@ public class FiltroDeAuditoria implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 		String uri = req.getRequestURI();
 		//Cookie cookie = new Cookies(req.getCookies()).getUsuarioLogado();
-		Usuario usuario =  (Usuario)req.getSession().getAttribute("usuario.logado");
+		Usuario usuario =  (Usuario)req.getSession().getAttribute("usuarioLogado");
 		if(usuario != null) {
 			System.out.println("Usuário " + usuario.getEmail() + " acessando a URI " + uri);
 			req.getSession().setMaxInactiveInterval(600);
