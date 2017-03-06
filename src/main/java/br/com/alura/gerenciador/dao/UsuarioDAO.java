@@ -11,6 +11,7 @@ public class UsuarioDAO {
 	static {
 		USUARIOS.put("guilherme.silveira@alura.com.br", new Usuario("guilherme.silveira@alura.com.br","silveira"));
 		USUARIOS.put("rodrigo.turini@alura.com.br", new Usuario("rodrigo.turini@alura.com.br","turini"));
+		USUARIOS.put("a", new Usuario("a","a"));
 	}
 
 	public Usuario buscaPorEmailESenha(String email, String senha) {

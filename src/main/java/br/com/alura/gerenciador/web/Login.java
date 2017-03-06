@@ -8,12 +8,15 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.Usuario;
 import br.com.alura.gerenciador.dao.UsuarioDAO;
 
 @WebServlet(urlPatterns="/login")
 public class Login extends HttpServlet {
+	
+	//final static Map<String, Usuario> USUARIOS_LOGADOS = new HashMap<>();
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,8 +26,13 @@ public class Login extends HttpServlet {
 		if(usuario == null){
 			resp.getWriter().println("<html><body>Usuario inválido!</body></html>");
 		} else {
-			Cookie cookie = new Cookie("usuario.logado", usuario.getEmail());
-			resp.addCookie(cookie);
+			//String codigoAleatorio = "" + System.currentTimeMillis() + "/" + Math.random();
+			//USUARIOS_LOGADOS.put(codigoAleatorio,usuario);
+			//Cookie cookie = new Cookie("usuario.logado", codigoAleatorio);
+			//cookie.setMaxAge(600);
+			//resp.addCookie(cookie);
+			HttpSession session = req.getSession();
+			session.setAttribute("usuario.logado", usuario);
 			resp.getWriter().println("<html><body>Bem-vindo "+ usuario.getEmail() +"!</body></html>");
 		}
 	}
